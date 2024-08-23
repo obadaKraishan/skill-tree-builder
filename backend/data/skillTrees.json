@@ -1,0 +1,29 @@
+[
+    {
+      "_id": "60d21b4677d0d8992e610c86",
+      "userId": "60d21b4667d0d8992e610c85",
+      "rootNode": {
+        "_id": "60d21b4677d0d8992e610c87",
+        "title": "Web Development",
+        "children": [
+          {
+            "_id": "60d21b4677d0d8992e610c88",
+            "title": "HTML & CSS",
+            "children": []
+          },
+          {
+            "_id": "60d21b4677d0d8992e610c89",
+            "title": "JavaScript",
+            "children": [
+              {
+                "_id": "60d21b4677d0d8992e610c8a",
+                "title": "React.js",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+  
