@@ -6,17 +6,22 @@ import 'reactflow/dist/style.css';
 function SkillTree() {
   const [skillTree, setSkillTree] = useState(null);
   const [elements, setElements] = useState([]);
+  const [loading, setLoading] = useState(true);  // Added loading state
+  const [error, setError] = useState(null);      // Added error state
 
   useEffect(() => {
     axios.get('http://localhost:5001/api/skill-trees/60d21b4667d0d8992e610c85')
-        .then(response => {
-            setSkillTree(response.data);
-            generateFlowElements(response.data);
-        })
-        .catch(error => {
-            console.error('There was an error fetching the skill tree!', error);
-        });
-}, []);
+      .then(response => {
+        setSkillTree(response.data);
+        generateFlowElements(response.data);
+        setLoading(false);  // Stop loading once data is fetched
+      })
+      .catch(error => {
+        setError('There was an error fetching the skill tree!');
+        setLoading(false);  // Stop loading even if there's an error
+        console.error(error);
+      });
+  }, []);
 
   const generateFlowElements = (data) => {
     const nodes = [];
@@ -45,9 +50,11 @@ function SkillTree() {
     };
 
     traverseTree(data.rootNode);
-
     setElements([...nodes, ...edges]);
   };
+
+  if (loading) return <p>Loading skill tree...</p>;  // Loading state
+  if (error) return <p className="text-red-500">{error}</p>;  // Error state
 
   return (
     <div>
@@ -61,7 +68,7 @@ function SkillTree() {
           <Controls />
         </ReactFlowProvider>
       ) : (
-        <p>Loading skill tree...</p>
+        <p>No skill tree data available.</p>
       )}
     </div>
   );

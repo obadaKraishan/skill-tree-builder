@@ -1,29 +1,40 @@
 [
-    {
-      "_id": "60d21b4677d0d8992e610c86",
-      "userId": "60d21b4667d0d8992e610c85",
-      "rootNode": {
-        "_id": "60d21b4677d0d8992e610c87",
-        "title": "Web Development",
-        "children": [
-          {
-            "_id": "60d21b4677d0d8992e610c88",
-            "title": "HTML & CSS",
-            "children": []
-          },
-          {
-            "_id": "60d21b4677d0d8992e610c89",
-            "title": "JavaScript",
-            "children": [
-              {
-                "_id": "60d21b4677d0d8992e610c8a",
-                "title": "React.js",
-                "children": []
-              }
-            ]
-          }
-        ]
-      }
+  {
+    "_id": "60d21b4677d0d8992e610c86",
+    "userId": "60d21b4667d0d8992e610c85",
+    "rootNode": {
+      "_id": "60d21b4677d0d8992e610c87",
+      "title": "Web Development",
+      "description": "Learn the fundamentals of web development.",
+      "level": 1,
+      "completed": false,
+      "children": [
+        {
+          "_id": "60d21b4677d0d8992e610c88",
+          "title": "HTML & CSS",
+          "description": "Start with the basics of web structure and styling.",
+          "level": 2,
+          "completed": false,
+          "children": []
+        },
+        {
+          "_id": "60d21b4677d0d8992e610c89",
+          "title": "JavaScript",
+          "description": "Learn programming concepts with JavaScript.",
+          "level": 2,
+          "completed": false,
+          "children": [
+            {
+              "_id": "60d21b4677d0d8992e610c8a",
+              "title": "React.js",
+              "description": "Build dynamic UIs with React.",
+              "level": 3,
+              "completed": false,
+              "children": []
+            }
+          ]
+        }
+      ]
     }
-  ]
-  
+  }
+]
