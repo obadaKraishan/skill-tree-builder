@@ -1,15 +1,29 @@
-let skillTrees = []; // This will hold all skill trees in memory
+const fs = require('fs');
+const path = require('path');
 
-const getSkillTree = async (req, res) => {
+const skillTreesPath = path.join(__dirname, '../data/skillTrees.json');
+const usersPath = path.join(__dirname, '../data/users.json');
+
+const getSkillTree = (req, res) => {
     const { userId } = req.params;
-    const skillTree = skillTrees.find(tree => tree.userId === userId);
-    if (!skillTree) {
-        return res.status(404).json({ message: 'Skill tree not found' });
-    }
-    res.json(skillTree);
+
+    // Read skill trees data from JSON file
+    fs.readFile(skillTreesPath, 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).json({ message: 'Error reading skill trees data' });
+        }
+        const skillTrees = JSON.parse(data);
+        const skillTree = skillTrees.find(tree => tree.userId === userId);
+
+        if (!skillTree) {
+            return res.status(404).json({ message: 'Skill tree not found' });
+        }
+
+        res.json(skillTree);
+    });
 };
 
-const createSkillTree = async (req, res) => {
+const createSkillTree = (req, res) => {
     const { userId, title } = req.body;
     const newSkillTree = {
         userId,
@@ -19,8 +33,22 @@ const createSkillTree = async (req, res) => {
             children: []
         }
     };
-    skillTrees.push(newSkillTree);
-    res.status(201).json(newSkillTree);
+
+    // Read and update skill trees data in JSON file
+    fs.readFile(skillTreesPath, 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).json({ message: 'Error reading skill trees data' });
+        }
+        const skillTrees = JSON.parse(data);
+        skillTrees.push(newSkillTree);
+
+        fs.writeFile(skillTreesPath, JSON.stringify(skillTrees, null, 2), (err) => {
+            if (err) {
+                return res.status(500).json({ message: 'Error writing skill trees data' });
+            }
+            res.status(201).json(newSkillTree);
+        });
+    });
 };
 
 function generateId() {

@@ -9,14 +9,14 @@ function SkillTree() {
 
   useEffect(() => {
     axios.get('http://localhost:5001/api/skill-trees/60d21b4667d0d8992e610c85')
-      .then(response => {
-        setSkillTree(response.data);
-        generateFlowElements(response.data);
-      })
-      .catch(error => {
-        console.error('There was an error fetching the skill tree!', error);
-      });
-  }, []);
+        .then(response => {
+            setSkillTree(response.data);
+            generateFlowElements(response.data);
+        })
+        .catch(error => {
+            console.error('There was an error fetching the skill tree!', error);
+        });
+}, []);
 
   const generateFlowElements = (data) => {
     const nodes = [];
