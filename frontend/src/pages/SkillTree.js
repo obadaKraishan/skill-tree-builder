@@ -8,7 +8,7 @@ function SkillTree() {
   const [elements, setElements] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/skill-trees/your_user_id')
+    axios.get('http://localhost:5001/api/skill-trees/60d21b4667d0d8992e610c85')
       .then(response => {
         setSkillTree(response.data);
         generateFlowElements(response.data);
