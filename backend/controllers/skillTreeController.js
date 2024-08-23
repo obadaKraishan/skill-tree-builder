@@ -2,10 +2,12 @@ const fs = require('fs');
 const path = require('path');
 
 const skillTreesPath = path.join(__dirname, '../data/skillTrees.json');
+const usersPath = path.join(__dirname, '../data/users.json');
 
 const getSkillTree = (req, res) => {
     const { userId } = req.params;
 
+    // Read skill trees data from JSON file
     fs.readFile(skillTreesPath, 'utf8', (err, data) => {
         if (err) {
             return res.status(500).json({ message: 'Error reading skill trees data' });
@@ -20,8 +22,6 @@ const getSkillTree = (req, res) => {
         res.json(skillTree);
     });
 };
-
-
 
 const createSkillTree = (req, res) => {
     const { userId, title } = req.body;

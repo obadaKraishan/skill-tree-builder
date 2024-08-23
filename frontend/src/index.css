@@ -1,3 +1,33 @@
+/* Tailwind CSS Directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Additional styles for React Flow and layout */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.react-flow {
+  background-color: #f0f0f0;
+}
+
+.react-flow__controls {
+  bottom: 10px;
+  left: 10px;
+}
+
+.react-flow__minimap {
+  bottom: 10px;
+  right: 10px;
+  height: 150px;
+  width: 200px;
+}
+
+.react-flow__container {
+  height: 600px;
+  width: 100%;
+  border: 1px solid #ddd;
+}
