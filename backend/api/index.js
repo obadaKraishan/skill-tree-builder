@@ -1,5 +1,5 @@
 const express = require('express');
-const skillTreeRoutes = require('../routes/skillTreeRoutes'); // Adjust the path if needed
+const skillTreeRoutes = require('../routes/skillTreeRoutes');
 
 const router = express.Router();
 
